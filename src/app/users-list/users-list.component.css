@@ -1,0 +1,34 @@
+#user-component{
+	padding-top: 50px;
+	padding-bottom: 80px;
+}
+#add-user{}
+#add-user .add-user-form{
+	padding-top: 30px;
+}
+#add-user .add-user-form .form-group{
+	height: 50px;
+}
+#add-user .alert-msg{
+	padding-top: 20px;
+}
+#users-list .list-group{
+	padding-top: 30px;
+}
+#users-list .list-group .row{
+	display: flex !important;
+}
+#users-list .list-group .list-group-item{
+	vertical-align: middle;
+}    
+#users-list .list-group .list-group-item .item .btn{
+	margin-right: 25px;
+}
+#users-list .list-group .list-group-item .item .btn:last-child{
+	margin-right: 0;
+}
+#users-list .row .alert-msg .alert{
+	padding: .5rem 1.25rem;
+	margin-bottom: 0;
+	border: none;
+}

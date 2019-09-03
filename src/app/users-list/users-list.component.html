@@ -1,0 +1,94 @@
+<div id="user-component" class="row">
+  <div id="add-user" class="col-md-4">
+    <h3>Add User</h3>
+    <div class="add-user-form">
+      <form #addNewUser="ngForm" name="user-form" (submit)=save(addNewUser)>
+        <div class="form-group">
+          <div>
+            <!-- two way binding of user.name & ngModel-->
+            <input 
+              class="form-control"
+              [(ngModel)]="user.name"
+              #userName="ngModel"
+              type="text"
+              name="name"
+              pattern="^[a-zA-Z]+$"
+              placeholder="Name" 
+              required>
+          </div>
+          <span class="help-block text-danger" *ngIf="!userName.valid && userName.touched" >
+              the user name is required
+          </span>
+          <span class="help-block text-danger" *ngIf="userName.errors?.pattern && userName.touched">
+              the user name can only contain the letters a-z or A-Z
+          </span>
+        </div>
+        <div class="form-group">
+          <div>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              [(ngModel)]="user.email"
+              #userEmail="ngModel"
+              placeholder="Email"
+              required>
+          </div>
+          <span class="help-block text-danger" *ngIf="userEmail.errors?.required && userEmail.touched">
+              the email address is required
+          </span>
+        </div>
+        <button class="btn btn-primary btn-sm" [disabled]="addNewUser.invalid">Add User</button>
+      </form>
+    </div>
+  </div>
+  <div id="users-list" class="col-md-8">
+    <div class="row">
+      <div class="col-md-6 users-list-title">
+        <h3>Users List</h3>
+      </div>
+      <div class="col-md-6 alert-msg">
+        <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+        <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      </div>
+    </div>
+    <div class="list-group">
+      <div *ngFor="let user of users" class="list-group-item row">
+        <div class="item col-md-4">
+          <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="user.name"
+              #userNameUpdate="ngModel"
+              [ngClass]="{ 'is-invalid': userNameUpdate.touched && userNameUpdate.invalid }"
+              pattern="^[a-zA-Z]+$"
+              required>
+        </div>
+        <div class="item col-md-5">
+          <input
+              class="form-control"
+              type="email"
+              [(ngModel)]="user.email"
+              #userEmailUpdate="ngModel"
+              [ngClass]="{ 'is-invalid': userEmailUpdate.touched && userEmailUpdate.invalid }"
+              required>
+        </div>
+        <div class="item col-md-3">
+          <input
+              type="button"
+              value="Update"
+              class="btn btn-sm btn-success"
+              [disabled]=" userNameUpdate.invalid || userEmailUpdate.invalid"
+              (click)="update(user.uid, userNameUpdate, userEmailUpdate)">
+          <input
+            type="button"
+            value="Delete"
+            name="delete"
+            class="btn btn-sm btn-danger"
+            [disabled]=" userNameUpdate.invalid || userEmailUpdate.invalid"
+            (click)="delete(user.uid)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
