@@ -11,7 +11,7 @@ import { User } from './../models/user';
 })
 export class UserService {
 	//if you change it to https:// instead you will get a ERR_CONNECTION_REFUSED
-	baseUrl = 'http://localhost/api';
+	baseUrl = 'http://faysalalaouiinbox.000webhostapp.com';
 	users: User[];
 	
 	constructor(private http: HttpClient) { }
