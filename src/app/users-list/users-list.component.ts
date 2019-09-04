@@ -49,7 +49,7 @@ export class UsersListComponent implements OnInit {
 	        (err) => this.error = err
 	      );
 	}
-	update(uid, name, email){
+	update(name, email, uid){
 		this.error = '';
 	    this.success = '';
 

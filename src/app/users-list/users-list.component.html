@@ -79,7 +79,7 @@
               value="Update"
               class="btn btn-sm btn-success"
               [disabled]=" userNameUpdate.invalid || userEmailUpdate.invalid"
-              (click)="update(user.uid, userNameUpdate, userEmailUpdate)">
+              (click)="update(userNameUpdate, userEmailUpdate, user.uid)">
           <input
             type="button"
             value="Delete"
