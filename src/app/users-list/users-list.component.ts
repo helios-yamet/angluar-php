@@ -13,7 +13,7 @@ export class UsersListComponent implements OnInit {
 	error = '';
 	success = '';
 	//creating a User class instance to save the input in the user-form
-	user = new User('', '');
+	user = new User();
 
 	constructor(private userService: UserService) { }
 
